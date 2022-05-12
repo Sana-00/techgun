@@ -5,24 +5,87 @@ import Home from "./Home";
 import About from "./About";
 import Service from "./Service";
 import Contact from "./Contact";
+import Footer from "./Footer";
 import NavBar from "./NavBar";
-import {Switch, Route, Redirect } from "react-router-dom";
+import User from "./User";
+import Login from "./Login";
+import { Switch, Route, Redirect } from "react-router-dom";
 
-const  App = () => {
-    return (
+const App = () => {
+  return (
+    <div>
+      <Switch>
+        <Route
+          exact
+          path="/"
+          component={Login}
+          render={() => (
+            <>
+              <Footer />
+            </>
+          )}
+        />
 
-     <div>
-        <NavBar/>
-        <Switch>
-        <Route exact path="/" component = {Home} />
-        <Route exact path="/about" component = {About} />
-        <Route exact path="/service" component = {Service} />
-        <Route exact path="/contact" component = {Contact} />
+        <Route
+          exact
+          path="/home"
+          render={() => (
+            <>
+              <NavBar />
+              <Home />
+              <Footer />
+            </>
+          )}
+        />
+        <Route
+          exact
+          path="/about"
+          render={() => (
+            <>
+              <NavBar />
+              <About />
+              <Footer />
+            </>
+          )}
+        />
+        <Route
+          exact
+          path="/service"
+          render={() => (
+            <>
+              <NavBar />
+              <Service />
+              <Footer />
+            </>
+          )}
+        />
+        <Route
+          exact
+          path="/contact"
+          render={() => (
+            <>
+              <NavBar />
+              <Contact />
+              <Footer />
+            </>
+          )}
+        />
+        <Route
+          exact
+          path="/user"
+          render={() => (
+            <>
+              <NavBar />
+              <User />
+              <Footer />
+            </>
+          )}
+        />
+
         <Redirect to="/" />
-        </Switch>
-        
-     </div>
-    );
+      </Switch>
+    </div>
+  );
 };
 
 export default App;
